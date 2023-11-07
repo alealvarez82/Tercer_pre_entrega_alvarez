@@ -12,3 +12,12 @@ def musicos(request):
     conocer = "Conociendo a los musicos"
     pagina2_html = HttpResponse(conocer)
     return pagina2_html
+
+def saludar_con_html(request):
+    contexto = {}
+    http_response = render(
+        request=request,
+        template_name='base.html',
+        context=contexto,
+    )
+    return http_response
