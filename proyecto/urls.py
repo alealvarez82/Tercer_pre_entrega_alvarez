@@ -8,5 +8,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("saludo/", saludar),
     path("conocer/", musicos),
-    path("saludo-html/", saludar_con_html),
+    path("inicio/", saludar_con_html),
 ]

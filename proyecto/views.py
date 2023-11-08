@@ -17,7 +17,7 @@ def saludar_con_html(request):
     contexto = {}
     http_response = render(
         request=request,
-        template_name='base.html',
+        template_name='index.html',
         context=contexto,
     )
     return http_response

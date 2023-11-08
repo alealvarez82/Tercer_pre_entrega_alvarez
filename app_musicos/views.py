@@ -5,11 +5,14 @@ from django.http import HttpResponse
 def inicio(request):
     return HttpResponse('vista inicio')
 
-def instrumentos(request):
+def listar_instrumentos(request):
     return HttpResponse('vista instrumentos')
 
-def musicos(request):
+def listar_musicos(request):
     return HttpResponse('vista musicos')
 
-def notas(request):
+def buscar_nota(request):
     return HttpResponse('vista notas')
+
+def crear_nota(request):
+    return HttpResponse('crear notas')
