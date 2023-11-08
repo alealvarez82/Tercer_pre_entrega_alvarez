@@ -22,10 +22,10 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">Inicio</a>
-                <a class="navbar-brand" href="#!">Musicos</a>
-                <a class="navbar-brand" href="#!">Instrumentos</a>
-                <a class="navbar-brand" href="#!">Notas de interes</a>
+                <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
+                <a class="navbar-brand" href="{% url 'lista_musicos' %}">Musicos</a>
+                <a class="navbar-brand" href="{% url 'lista_instrumentos' %}">Instrumentos</a>
+                <a class="navbar-brand" href="{% url 'ver_nota' %}">Notas de interes</a>
                 <a class="btn btn-primary" href="#signup">Ingresar</a>
             </div>
         </nav>
