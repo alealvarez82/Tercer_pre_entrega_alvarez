@@ -1,7 +1,7 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
 {% block titulo %}
-<title>Blog de musicos - Musicos</title>
+<title>Blog de musicos</title>
 {% endblock titulo %}
 
 {% block contenido %}
@@ -26,7 +26,7 @@
       <td>{{ musico.apellido }}</td>
       <td>{{ musico.instrumento }}</td>
       <td>
-        <a href="{% url 'ver_musico' musico.id %}">Ver</a>
+        <a href="{% url 'listar_musicos' musico.id %}">Ver</a>
       </td>
       <td>
         <a href="{% url 'editar_musico' musico.id %}">Editar</a>

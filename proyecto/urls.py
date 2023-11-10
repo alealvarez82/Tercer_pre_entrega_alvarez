@@ -7,6 +7,5 @@ from app_musicos.views import listar_musicos
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("musicos/", include("app_musicos.urls")),
-    #path("inicio/", saludar_con_html),
     path("", saludar_con_html, name="inicio"),
 ]

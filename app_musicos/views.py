@@ -19,12 +19,11 @@ def buscar_instrumento(request):
 
 def listar_musicos(request):
     contexto = {
-        "profesor": "Pedro",
-        "estudiantes": Musicos.objects.all(),
+        "Creador" : "Ale VH"
     }
     http_response = render(
         request=request,
-        template_name='app_musicos/lista_musicos.html',
+        template_name='app_musicos/listar_musicos.html',
         context=contexto,
     )
     return http_response
