@@ -13,10 +13,10 @@ from django.http import HttpResponse
 #    pagina2_html = HttpResponse(conocer)
 #    return pagina2_html
 
-def saludar_con_html(request):
+def inicio(request):
     context = {}
     http_response = render(
-        request=request,
+        request = request,
         template_name='index.html',
         context=context,
     )
