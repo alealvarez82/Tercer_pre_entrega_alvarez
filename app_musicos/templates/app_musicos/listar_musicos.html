@@ -1,43 +1,55 @@
 {% extends "base.html" %}
 
 {% block titulo %}
-<title>Blog de musicos</title>
+    <title>Blog de músicos</title>
 {% endblock titulo %}
 
 {% block contenido %}
-<h3>Musicos</h3>
-<a href="{% url 'crear_musico' %}">Crear musico</a>
-<br>
+    <style>
 
-<table class="table">
-  <tbody>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Instrumento</th>
-      <th></th>
-      <th></th>
-    </tr>
-    {% for musico in object_list %}
-    <tr>
-      <td>{{ musico.id }}</td>
-      <td>{{ musico.nombre }}</td>
-      <td>{{ musico.apellido }}</td>
-      <td>{{ musico.instrumento }}</td>
-      <td>
-        <a href="{% url 'listar_musicos' musico.id %}">Ver</a>
-      </td>
-      <td>
-        <a href="{% url 'editar_musico' musico.id %}">Editar</a>
-      </td>
-      <td>
-        <a href="{% url 'eliminar_musico' musico.id %}">
-          <i class="bi bi-trash"></i>
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+        h3, a, th, td {
+            color: white;
+        }
+
+        table {
+            border: 1px solid white;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+    <h3>Musicos</h3>
+    <a href="{% url 'crear_musico' %}">Crear músico</a>
+    <br>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Instrumento</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for musico in object_list %}
+                <tr>
+                    <td>{{ musico.id }}</td>
+                    <td>{{ musico.nombre }}</td>
+                    <td>{{ musico.apellido }}</td>
+                    <td>{{ musico.instrumento }}</td>
+                    <td><a href="{% url 'listar_musicos' musico.id %}">Ver</a></td>
+                    <td><a href="{% url 'editar_musico' musico.id %}">Editar</a></td>
+                    <td><a href="{% url 'eliminar_musico' musico.id %}"><i class="bi bi-trash"></i></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock contenido %}

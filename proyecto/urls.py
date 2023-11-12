@@ -7,5 +7,5 @@ from app_musicos.views import listar_musicos
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("musicos/", include("app_musicos.urls")),
-    path("", inicio),
+    path("", inicio , name= "inicio"),
 ]
