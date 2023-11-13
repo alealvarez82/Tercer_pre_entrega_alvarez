@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.urls import reverse
 
 from app_musicos.models import Instrumentos, Musicos, Notas
 
@@ -39,3 +40,23 @@ def buscar_nota(request):
 
 def crear_nota(request):
     return HttpResponse('crear notas')
+
+def crear_musico(request):
+   if request.method == "POST":
+       data = request.POST
+       musico = Musico(nombre=data['nombre'], comision=data['instrumento'])
+       musico.save()
+       url_exitosa = reverse('lista_musicos')
+       return redirect(url_exitosa)
+   else:  # GET
+       return render(
+           request=request,
+           template_name='app_musicos/crear_musico.html',
+       )
+
+             
+
+        
+
+        
+        
