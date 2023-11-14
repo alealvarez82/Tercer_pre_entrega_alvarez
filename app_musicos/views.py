@@ -42,17 +42,19 @@ def crear_nota(request):
     return HttpResponse('crear notas')
 
 def crear_musico(request):
-   if request.method == "POST":
-       data = request.POST
-       musico = Musico(nombre=data['nombre'], comision=data['instrumento'])
-       musico.save()
-       url_exitosa = reverse('lista_musicos')
-       return redirect(url_exitosa)
-   else:  # GET
-       return render(
-           request=request,
-           template_name='app_musicos/crear_musico.html',
-       )
+    if request.method == "POST":
+        data = request.POST
+        musico = Musicos(nombre=data['nombre'],
+                         instrumento=data['instrumento'])
+        musico.save()
+        url_exitosa = reverse('listar_musicos')
+        return redirect(url_exitosa)
+    else:  # GET
+        return render(
+            request=request,
+            template_name='app_musicos/crear_musico.html',
+        )
+
 
              
 

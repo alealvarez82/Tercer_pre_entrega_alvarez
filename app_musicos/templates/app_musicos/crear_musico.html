@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block contenido %}
+
 <form method="post">
   {% csrf_token %}
-  <p>Nombre del instrumento</p>
+  <p>Nombre del músico</p>
   <input type="text" name="nombre">
-  <p>instrumento</p>
-  <input type="number" name="instrumento" step="1">
+  <p>Instrumento</p>
+  <input type="text" name="instrumento">
   <input type="submit" value="Enviar">
 </form>
-{% endblock contenido %}
+
+{% endblock contenido%}

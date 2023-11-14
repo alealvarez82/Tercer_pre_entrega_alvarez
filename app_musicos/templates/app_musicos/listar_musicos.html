@@ -34,7 +34,6 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Apellido</th>
                 <th>Instrumento</th>
                 <th></th>
                 <th></th>
@@ -43,7 +42,6 @@
                 <tr>
                     <td>{{ musico.id }}</td>
                     <td>{{ musico.nombre }}</td>
-                    <td>{{ musico.apellido }}</td>
                     <td>{{ musico.instrumento }}</td>
                     <td><a href="{% url 'listar_musicos' musico.id %}">Ver</a></td>
                     <td><a href="{% url 'editar_musico' musico.id %}">Editar</a></td>
