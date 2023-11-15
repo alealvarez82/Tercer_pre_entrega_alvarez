@@ -43,9 +43,14 @@
                     <td>{{ musico.id }}</td>
                     <td>{{ musico.nombre }}</td>
                     <td>{{ musico.instrumento }}</td>
-                    <td><a href="{% url 'listar_musicos' musico.id %}">Ver</a></td>
-                    <td><a href="{% url 'editar_musico' musico.id %}">Editar</a></td>
-                    <td><a href="{% url 'eliminar_musico' musico.id %}"><i class="bi bi-trash"></i></a></td>
+                    <td><a href="">Ver</a></td>
+                    <td><a href="">Editar</a></td>
+                    <td><form action="{% url 'eliminar_musico' Musicos.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="eliminar"/>
+                      </form>
+               </td>
+
                 </tr>
             {% endfor %}
         </tbody>

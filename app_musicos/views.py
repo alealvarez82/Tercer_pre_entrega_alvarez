@@ -20,7 +20,7 @@ def buscar_instrumento(request):
 
 def listar_musicos(request):
     contexto = {
-        "Creador" : "Ale VH"
+         "object_list": Musicos.objects.all()
     }
     http_response = render(
         request=request,
@@ -28,9 +28,6 @@ def listar_musicos(request):
         context=contexto,
     )
     return http_response
-
-def ingresar_musico(request):
-    return HttpResponse('vista musicos')
 
 def ver_nota(request):
     return HttpResponse('vista notas')
@@ -54,6 +51,16 @@ def crear_musico(request):
             request=request,
             template_name='app_musicos/crear_musico.html',
         )
+
+def eliminar_musico(request, id):
+    # obtienes el curso de la base de datos
+    musicos = Musicos.objects.get(id=id)
+    if request.method == "POST":
+        # borra el curso de la base de datos
+        musicos.delete()
+        # redireccionamos a la URL exitosa
+        url_exitosa = reverse('listar_musicos')
+        return redirect(url_exitosa)
 
 
              
