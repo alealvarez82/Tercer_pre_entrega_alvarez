@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<form method="post">
+  {% csrf_token %}
+  <p>Nombre del instrumento</p>
+  <input type="text" name="nombre">
+  <p>Tipo</p>
+  <input type="text" name="tipo">
+  <input type="submit" value="Enviar">
+</form>
+
+{% endblock contenido %}

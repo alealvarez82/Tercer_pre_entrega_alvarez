@@ -5,19 +5,42 @@ from django.urls import reverse
 from django.shortcuts import get_object_or_404
 
 
-from app_musicos.models import Musicos
+from app_musicos.models import Musicos, Instrumentos
 
 # Create your views here.
 
 def listar_instrumentos(request):
-    return HttpResponse('vista instrumentos')
+    contexto = {
+         "object_list": Instrumentos.objects.all()
+    }
+    http_response = render(
+        request=request,
+        template_name='app_musicos/listar_instrumentos.html',
+        context=contexto,
+    )
+    return http_response
 
-def ingresar_instrumento(request):
-    return HttpResponse('vista instrumentos')
 
-def buscar_instrumento(request):
-    return HttpResponse('vista instrumentos')
+def crear_instrumento(request):
+    if request.method == "POST":
+        data = request.POST
+        instrumento = Instrumentos(nombre=data['nombre'],
+                         instrumento=data['tipo'])
+        instrumento.save()
+        url_exitosa = reverse('listar_instrumentos')
+        return redirect(url_exitosa)
+    else:  # GET
+        return render(
+            request=request,
+            template_name='app_musicos/crear_instrumento.html',
+        )
 
+def eliminar_instrumento(request, id):
+    instrumento = Instrumentos.objects.get(id=id)
+    if request.method == "POST":
+       instrumento.delete()
+       url_exitosa = reverse('listar_instrumentos')
+       return redirect(url_exitosa)
 
 
 def listar_musicos(request):
@@ -31,14 +54,6 @@ def listar_musicos(request):
     )
     return http_response
 
-def ver_nota(request):
-    return HttpResponse('vista notas')
-
-def buscar_nota(request):
-    return HttpResponse('vista notas')
-
-def crear_nota(request):
-    return HttpResponse('crear notas')
 
 def crear_musico(request):
     if request.method == "POST":
@@ -60,6 +75,15 @@ def eliminar_musico(request, id):
        musico.delete()
        url_exitosa = reverse('listar_musicos')
        return redirect(url_exitosa)
+    
+def ver_nota(request):
+    return HttpResponse('vista notas')
+
+def buscar_nota(request):
+    return HttpResponse('vista notas')
+
+def crear_nota(request):
+    return HttpResponse('crear notas')
 
 
 

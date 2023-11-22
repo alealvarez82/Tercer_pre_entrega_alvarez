@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Blog de músicos</title>
+{% endblock titulo %}
+
+{% block contenido %}
+    <style>
+
+        h3, a, th, td {
+            color: white;
+        }
+
+        table {
+            border: 1px solid white;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+    <h3>Instrumentos</h3>
+    <a href="{% url 'crear_instrumento' %}">Crear instrumento</a>
+    <br>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Intrumento</th>
+                <th>Tipo</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for Instrumentos in object_list %}
+                <tr>
+                    <td>{{ instrumento.id }}</td>
+                    <td>{{ instrumento.nombre }}</td>
+                    <td>{{ instrumento.tipo }}</td>
+                    <td><a href="">Ver</a></td>
+                    <td><a href="">Editar</a></td>
+                    <td>
+                        <form action="{% url 'eliminar_instrumento' instrumento.id %}" method="post">
+                            {% csrf_token %}
+                   
+                        <input type="submit" value="eliminar"/>
+                      </form>
+                    </a>
+               </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
