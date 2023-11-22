@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse
+from django.shortcuts import get_object_or_404
 
-from app_musicos.models import Instrumentos, Musicos, Notas
+
+from app_musicos.models import Musicos
 
 # Create your views here.
 
@@ -53,14 +55,12 @@ def crear_musico(request):
         )
 
 def eliminar_musico(request, id):
-    # obtienes el curso de la base de datos
-    musicos = Musicos.objects.get(id=id)
+    musico = Musicos.objects.get(id=id)
     if request.method == "POST":
-        # borra el curso de la base de datos
-        musicos.delete()
-        # redireccionamos a la URL exitosa
-        url_exitosa = reverse('listar_musicos')
-        return redirect(url_exitosa)
+       musico.delete()
+       url_exitosa = reverse('listar_musicos')
+       return redirect(url_exitosa)
+
 
 
              

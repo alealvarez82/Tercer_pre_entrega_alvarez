@@ -45,10 +45,13 @@
                     <td>{{ musico.instrumento }}</td>
                     <td><a href="">Ver</a></td>
                     <td><a href="">Editar</a></td>
-                    <td><form action="{% url 'eliminar_musico' Musicos.id %}" method="post">
-                        {% csrf_token %}
+                    <td>
+                        <form action="{% url 'eliminar_musico' musico.id %}" method="post">
+                            {% csrf_token %}
+                   
                         <input type="submit" value="eliminar"/>
                       </form>
+                    </a>
                </td>
 
                 </tr>
