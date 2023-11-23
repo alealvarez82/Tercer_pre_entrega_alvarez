@@ -24,8 +24,8 @@ def listar_instrumentos(request):
 def crear_instrumento(request):
     if request.method == "POST":
         data = request.POST
-        instrumento = Instrumentos(nombre=data['nombre'],
-                         instrumento=data['tipo'])
+        instrumento = Instrumentos(instrumento=data['instrumento'],
+                         tipo=data['tipo'])
         instrumento.save()
         url_exitosa = reverse('listar_instrumentos')
         return redirect(url_exitosa)
