@@ -3,8 +3,9 @@ from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
-
+from app_musicos.forms import MusicoFormulario
 from app_musicos.models import Musicos, Instrumentos
 
 # Create your views here.
@@ -76,6 +77,30 @@ def eliminar_musico(request, id):
        url_exitosa = reverse('listar_musicos')
        return redirect(url_exitosa)
     
+def editar_musico(request, id):
+   musico = Musicos.objects.get(id=id)
+   if request.method == "POST":
+       formulario = MusicoFormulario(request.POST)
+
+       if formulario.is_valid():
+           data = formulario.cleaned_data
+           musico.nombre = data['nombre']
+           musico.instrumento = data['instrumento']
+           musico.save()
+           url_exitosa = reverse('listar_musicos')
+           return redirect(url_exitosa)
+   else:  # GET
+       inicial = {
+           'nombre': musico.nombre,
+           'instrumento': musico.instrumento,
+       }
+       formulario = MusicoFormulario(initial=inicial)
+   return render(
+       request=request,
+       template_name='app_musicos/musico_form.html',
+       context={'formulario': formulario},
+   )
+
 def ver_nota(request):
     return HttpResponse('vista notas')
 
@@ -84,8 +109,6 @@ def buscar_nota(request):
 
 def crear_nota(request):
     return HttpResponse('crear notas')
-
-
 
              
 
