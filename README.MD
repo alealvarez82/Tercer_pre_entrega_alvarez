@@ -1,10 +1,26 @@
-El boton inicio lleva a la página principal o de Bienvenida
-    Con el botón MUSICOS se accede a la parte de la aplicación donde se muestra el nombre del músico
-y s el instrumento que ejecuta. Se pueden agrear, editar y buscar.
-    Con el botón INSTRUMENTOS se muestra el nombre del instrumento y a que familia pertenece.
-    Con el boton NOTAS DE INTERES se accede a una sección donde se muestra un título descriptivo y una nota
-relacionada a la música.
 
+## Instrucciones instalar proyecto en local
++ Crea una carpeta contenedora madre
++ Abre la consola y ubicate en la carpeta madre
++ Clona este proyecto en la carpeta madre
++ Entra en la carpeta que acabas de clonar
++ Para instalar las dependencias corre este comando:
+
+```
+pip install -r requirements.txt
+```
+
+## Instrucciones para entrar al panel aministrativo de Django
++ En consola, crear un superuser:
+```
+python manage.py createsuperuser
+```
++ Acceder con user y password via:
+```
+127.0.0.1:8000/admin
+```
+
+# Superusuario de pruebas
 
 User: Admin
 Mail: admin@admin.com
